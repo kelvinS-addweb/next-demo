@@ -20,13 +20,13 @@ const Home: NextPage = () => {
 
         <p className={styles.description}>
           <Link href={`/users`}>
-            <a className="hover:underline">User List</a>
+            <a className="hover:underline">Users: SSG & ISR</a>
           </Link>
         </p>
 
         <p className={styles.description}>
           <Link href={`/posts`}>
-            <a className="hover:underline">Posts</a>
+            <a className="hover:underline">Posts : SSR</a>
           </Link>
         </p>
       </main>

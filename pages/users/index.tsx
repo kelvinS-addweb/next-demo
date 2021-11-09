@@ -2,18 +2,21 @@ import { GetStaticProps } from 'next'
 import { InferGetStaticPropsType } from 'next'
 import Link from 'next/link'
 import { User } from '../../models/User'
-
+const seconds = 30
 const user = ({ users }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
-    <ul>
-      {users.map((user: User) => (
-        <Link key={user.id} href={`/users/${user.id}`}>
-          <a className="hover:underline">
-            <li key={user.id}>user: {user.name}</li>
-          </a>
-        </Link>
-      ))}
-    </ul>
+    <>
+      <h1>ISR Demo: {seconds} seconds</h1>
+      <ul>
+        {users.map((user: User) => (
+          <li key={user.id}>
+            <Link href={`/users/${user.id}`}>
+              <a className="hover:underline">user: {user.name}</a>
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </>
   )
 }
 
@@ -25,6 +28,7 @@ export const getStaticProps: GetStaticProps = async () => {
     props: {
       users: res,
     },
+    revalidate: seconds,
   }
 }
 

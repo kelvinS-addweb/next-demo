@@ -11,9 +11,11 @@ const post = ({
       <ul>
         <li>id: {post.id}</li>
         <li>userId: {post.userId}</li>
-        <h3>
-          body: <p>{post.body}</p>
-        </h3>
+        <li>
+          <h3>
+            body: <p>{post.body}</p>
+          </h3>
+        </li>
       </ul>
     </div>
   )
@@ -23,10 +25,16 @@ export const getServerSideProps = async ({
   params,
 }: GetServerSidePropsContext) => {
   const post: Post = await fetch(
-    `https://jsonplaceholder.typicode.com/posts/${params?.id}`
+    `http://localhost:4000/posts/${params?.id}`
   ).then((response) => response.json())
 
-  if (!post) {
+  // if (Object.keys(post).length === 0 && post.constructor === Object) {
+  //   return {
+  //     notFound: true,
+  //   }
+  // }
+
+  if (Object.keys(post).length === 0 && post.constructor === Object) {
     return {
       redirect: {
         destination: '/',
@@ -34,7 +42,6 @@ export const getServerSideProps = async ({
       },
     }
   }
-
   return {
     props: {
       post: post as Post,
