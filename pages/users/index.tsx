@@ -21,9 +21,9 @@ const user = ({ users }: InferGetStaticPropsType<typeof getStaticProps>) => {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const res: User[] = await fetch(
-    'https://jsonplaceholder.typicode.com/users/'
-  ).then((response) => response.json())
+  const res: User[] = await fetch('http://localhost:4000/users/').then(
+    (response) => response.json()
+  )
   return {
     props: {
       users: res,
