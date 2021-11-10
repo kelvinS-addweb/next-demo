@@ -15,20 +15,27 @@ const Home: NextPage = () => {
 
       <main className={styles.main}>
         <h2 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
+          <a href="https://nextjs.org">Next.js</a> Demos
         </h2>
+        <div>
+          <p className={styles.description}>
+            <Link href={`/users`}>
+              <a className="hover:underline">Users: SSG & ISR</a>
+            </Link>
+          </p>
 
-        <p className={styles.description}>
-          <Link href={`/users`}>
-            <a className="hover:underline">Users: SSG & ISR</a>
-          </Link>
-        </p>
+          <p className={styles.description}>
+            <Link href={`/posts`}>
+              <a className="hover:underline">Posts : SSR</a>
+            </Link>
+          </p>
 
-        <p className={styles.description}>
-          <Link href={`/posts`}>
-            <a className="hover:underline">Posts : SSR</a>
-          </Link>
-        </p>
+          <p className={styles.description}>
+            <Link href={`/clientside`}>
+              <a className="hover:underline">Client Side Demo : CSR</a>
+            </Link>
+          </p>
+        </div>
       </main>
 
       <footer className={styles.footer}>
