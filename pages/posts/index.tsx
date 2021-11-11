@@ -6,6 +6,8 @@ import { Post } from '../../models/Post'
 const post = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <>
+      <h1>SSR Demo: click on each item below will open a SSR page</h1>
+      <h2>Current Time: {new Date(Date.now()).toLocaleString()}</h2>
       <ul>
         {posts.map((post: Post) => (
           <li key={post.id}>

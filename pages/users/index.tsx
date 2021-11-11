@@ -4,17 +4,26 @@ import Link from 'next/link'
 import { User } from '../../models/User'
 const seconds = 30
 const user = ({ users }: InferGetStaticPropsType<typeof getStaticProps>) => {
+  console.log('====> rendering user list')
   return (
     <>
-      <h1>ISR Demo: {seconds} seconds</h1>
+      <h1>
+        00 ISR Demo: {seconds} seconds -- This page is an ISR demo showing list
+        of users
+      </h1>
+      <h2>Current Time: {new Date(Date.now()).toLocaleString()}</h2>
       <ul>
-        {users.map((user: User) => (
-          <li key={user.id}>
-            <Link href={`/users/${user.id}`}>
-              <a className="hover:underline">user: {user.name}</a>
-            </Link>
-          </li>
-        ))}
+        {users.map((user: User) => {
+          console.log('===> mapping over user list')
+
+          return (
+            <li key={user.id}>
+              <Link href={`/users/${user.id}`}>
+                <a className="hover:underline">user: {user.name}</a>
+              </Link>
+            </li>
+          )
+        })}
       </ul>
     </>
   )

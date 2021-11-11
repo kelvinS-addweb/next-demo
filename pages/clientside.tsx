@@ -7,14 +7,19 @@ const fetcher = async () => {
 }
 
 function ClientSide() {
+  console.log('======> CSR begin render')
+
   const { data, error } = useSWR('dashboard', fetcher)
 
   if (error) return 'An error has occurred.'
   if (!data) return 'Loading...'
 
+  console.log('======> CSR end render')
+
   return (
     <div>
-      <h2>Client-Side Rendering using SWR:</h2>
+      <h1>Client-Side Rendering using SWR:</h1>
+      <h2>Current Time: {new Date(Date.now()).toLocaleString()}</h2>
       {data.map((item: Todo) => {
         return (
           <div key={item.id}>
